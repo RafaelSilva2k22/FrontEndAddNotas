@@ -11,28 +11,31 @@ export function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
+    event.preventDefault();
     if (!name || !email || !password) {
       alert("Preencha todos os campos");
       return;
     }
 
-    await api
-      .post("/users", { name, email, password })
-      .then(() => {
-        alert("Cadastro realizado com sucesso!");
-        navigate("/");
-      })
-      .catch((error) => {
-        if (error.response) {
-          alert(error.response.data.message);
-        } else {
-          alert("Ocorreu um erro ao realizar o cadastro");
-        }
-      });
+    setIsLoading(true);
+    try {
+      await api.post("/users", { name, email, password });
+      alert("Cadastro realizado com sucesso!");
+      navigate(-1);
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Ocorreu um erro ao realizar o cadastro");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -64,7 +67,7 @@ export function SignUp() {
             aria-label="Senha"
             onChange={(e) => setPassword(e.target.value)}
           ></Input>
-          <Button title="Cadastrar" onClick={handleSubmit}></Button>
+          <Button title={isLoading ? 'Cadastrando...' : 'Cadastrar'} onClick={handleSubmit}></Button>
         </Form>
 
         <Link to="/">Voltar</Link>

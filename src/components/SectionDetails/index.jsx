@@ -6,17 +6,22 @@ import { Container } from "./style";
 import { Section } from "../Section";
 import { Tags } from "../marcadores";
 import { ButtonText } from "../buttontext";
-import { Button } from "../button";
+import { FiTrash } from "react-icons/fi";
 
 export function SectionDetails() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
   const params = useParams();
 
-  const returnHomePage = () => {
-    navigate(-1);
-  };
 
+  async function handleRemoveNote() {
+    const confirm = window.confirm('Deseja mesmo remover esta nota?')
+
+    if (confirm) {
+      await api.delete(`/notes/${params.id}`)
+      navigate(-1)
+    }
+  }
   useEffect(() => {
     async function fetchNote() {
       const response = await api.get(`/notes/${params.id}`);
@@ -29,26 +34,16 @@ export function SectionDetails() {
     <Container>
       {data && (
         <main className="container-post">
-          <ButtonText title="Excluir Nota" isRed></ButtonText>
-          <h1>{data.title}</h1>
-          <p>{data.description}</p>
+          <div className="trash-container" onClick={() => { handleRemoveNote() }}><FiTrash></FiTrash></div>
 
-          <Section title="Links uteis">
-            {data.links.map((link) => (
-              <li key={String(link.id)}>
-                <a href={link.url} target="_blank">
-                  {link.url}
-                </a>
-              </li>
-            ))}
-          </Section>
+          <h1>{data.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: data.description }} />
+
           <Section title="tags">
             {data.tags.map((tag) => (
               <Tags key={String(tag.id)} title={tag.name}></Tags>
             ))}
           </Section>
-
-          <Button title="Voltar" onClick={() => returnHomePage()} />
         </main>
       )}
     </Container>

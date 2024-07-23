@@ -1,20 +1,21 @@
 const theme = {
   COLORS: {
-    BACKGROUND_COLOR_WHITE: "#fcf3e3",
-    BACKGROUND_COLOR_BLACK: "#0D4C92",
+    BACKGROUND_COLOR_WHITE: "#f9f6ef",
+    BACKGROUND_COLOR_BLACK: "#282828",
 
     TRANSPARENT: "transparent",
 
-    TEXT_COLOR_WHITE: "#fcf3e3",
-    TEXT_COLOR_BLACK: "#45474B",
+    TEXT_COLOR_WHITE: "#f9f6ef",
+    TEXT_COLOR_BLACK: "#282828",
 
-    PRIMARY_COLOR: "#51DACF",
+    PRIMARY_COLOR: "#0D74E7",
+    SECONDARY_COLOR: "#7894FF",
 
-    GRAY_70: "#59C1BD",
+    GRAY_70: "#FFF6EE",
     GRAY_50: "#CFF5E7",
 
-    ATENTION: "#fdfd96  ",
-    ERROR: "#ff6961",
+    ATENTION: "#FBBD0D",
+    ERROR: "#FD1F4A",
   },
   FONT_SIZES: {
     H1: "25px",

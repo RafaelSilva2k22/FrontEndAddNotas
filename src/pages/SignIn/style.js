@@ -19,11 +19,12 @@ export const Container = styled.div`
     justify-content: center;
 
     > h1 {
-      color: ${({ theme }) => theme.COLORS.TEXT_COLOR_BLACK};
+      color: ${({ theme }) => theme.COLORS.SECONDARY_COLOR};
       line-height: 40px;
+      font-weight: 700;
     }
     > span {
-      color: ${({ theme }) => theme.COLORS.GRAY_50};
+      color: ${({ theme }) => theme.COLORS.TEXT_COLOR_BLACK};
     }
 
     > h2 {

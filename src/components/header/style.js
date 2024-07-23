@@ -2,17 +2,22 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.header`
-  grid-area: header;
-  width: 90%;
-  max-width: 1440px;
-  height: 60px;
+    grid-area: header;
+    width: 100%;
+    height: 76px;
+    padding: 0 32px 0 16px;
+    margin: 4px auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
 
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  gap: 24px;
-  margin: 0 auto;
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_WHITE};
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_BLACK};
+    position: relative;
+
+
+    > a {
+      color: ${({ theme }) => theme.COLORS.TEXT_COLOR_WHITE};
+}
 `;
 
 export const Profile = styled(Link)`
@@ -23,8 +28,20 @@ export const Profile = styled(Link)`
   color: ${({ theme }) => theme.COLORS.TEXT_COLOR_WHITE};
 
   > img {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
     border-radius: 50%;
+    border: 2px solid ${({ theme }) => theme.COLORS.BACKGROUND_COLOR}
   }
 `;
+export const Logo = styled.div`
+  width: 250px;
+  display: flex;
+  align-items: center;
+
+  > img {
+    height: 45%;
+    
+  }
+`

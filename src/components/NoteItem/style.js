@@ -5,14 +5,14 @@ export const Container = styled.div`
   align-items: center;
 
   background-color: ${({ theme, $isNew }) =>
-    $isNew ? theme.COLORS.TRASNSPARENT : theme.COLORS.TEXT_COLOR_WHITE};
+    $isNew ? theme.COLORS.TRASNSPARENT : theme.COLORS.BACKGROUND_COLOR_BLACK};
 
   color: ${({ theme }) => theme.TEXT_COLOR_BLACK};
 
   border: ${({ theme, $isNew }) =>
     $isNew
       ? `1px dashed ${theme.COLORS.TEXT_COLOR_BLACK}`
-      : `1px solid ${theme.COLORS.TEXT_COLOR_BLACK}`};
+      : `1px solid ${theme.COLORS.BACKGROUND_COLOR_BLACK}`};
 
   margin: 32px 8px;
   border-radius: 5px;
@@ -25,7 +25,7 @@ export const Container = styled.div`
     border: none;
     background: transparent;
     color: ${({ theme, $isNew }) =>
-      $isNew ? theme.COLORS.PRIMARY_COLOR : theme.COLORS.ERROR};
+    $isNew ? theme.COLORS.PRIMARY_COLOR : theme.COLORS.ERROR};
   }
 
   > input {
@@ -34,15 +34,11 @@ export const Container = styled.div`
     padding: 12px;
 
     color: ${({ theme, $isNew }) =>
-      $isNew ? theme.COLORS.TEXT_COLOR_BLACK : theme.COLORS.GRAY_70};
+    $isNew ? theme.COLORS.TEXT_COLOR_BLACK : theme.COLORS.GRAY_70};
 
     background-color: transparent;
     border: none;
     border-radius: 5px;
     outline: none;
-
-    &::placeholder {
-      color: ${({ theme }) => theme.COLORS.GRAY_70};
-    }
   }
 `;

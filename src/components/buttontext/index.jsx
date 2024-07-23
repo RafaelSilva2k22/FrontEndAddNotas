@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Container } from "./style";
 
 export function ButtonText({ title, isActive = false, isRed, icon, ...rest }) {

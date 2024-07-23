@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100vw;
@@ -6,30 +7,21 @@ export const Container = styled.div`
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_WHITE};
   display: grid;
-  grid-template-rows: 60px auto;
+  grid-template-rows: 76px auto;
   grid-template-columns: 250px auto;
 
   grid-template-areas:
-    "logo header"
+    "header header"
     "content content";
-`;
 
-export const LogoNewPost = styled.div`
-  width: 100%;
-  grid-area: logo;
-
-  > a {
-    padding-left: 16px;
-    font-size: 22px;
-    line-height: 60px;
-    font-family: ${({ theme }) => theme.FONT_FAMILIES.SECONDARY};
-  }
+    gap: 16px;
 `;
 
 export const Content = styled.main`
   grid-area: content;
-  width: 760px;
+  width: 900px;
   height: 100%;
+  
   margin: 0 auto;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_WHITE};
 `;
@@ -37,19 +29,13 @@ export const Content = styled.main`
 export const Form = styled.form`
   width: 100%;
   margin: 0 auto;
-  padding: 0 64px;
+  padding: 0;
 `;
 
 export const Title = styled.header`
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-
-  > a {
-    line-height: 64px;
-    color: ${({ theme }) => theme.COLORS.PRIMARY_COLOR};
-  }
+  
   > h1 {
     line-height: 64px;
   }
@@ -68,4 +54,20 @@ export const TextArea = styled.textarea`
   outline: none;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_WHITE};
+`;
+
+export const Profile = styled(Link)`
+  width: auto;
+
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.COLORS.TEXT_COLOR_WHITE};
+
+  > img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid ${({ theme }) => theme.COLORS.BACKGROUND_COLOR}
+  }
 `;

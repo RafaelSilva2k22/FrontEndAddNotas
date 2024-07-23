@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 98%;
+  width: 99%;
   height: 100vh;
   margin: 0 auto;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_WHITE};
@@ -12,6 +12,7 @@ export const Container = styled.div`
     padding: 0 32px;
     margin: 4px auto;
     display: flex;
+    justify-content: space-between;
     border-radius: 5px;
 
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_BLACK};

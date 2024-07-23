@@ -1,31 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  width: 200px;
-  height: 250px;
+  width: 300px;
+  height: 150px;
 
   margin: 16px 0;
-  background: #8360c3;
-  background: -webkit-linear-gradient(
-    to bottom,
-    ${({ theme }) => theme.COLORS.PRIMARY_COLOR},
-    ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_BLACK}
-  );
-  background: linear-gradient(
-    to bottom,
-    ${({ theme }) => theme.COLORS.PRIMARY_COLOR},
-    ${({ theme }) => theme.COLORS.BACKGROUND_COLOR_BLACK}
-  );
+  background:
+    ${({ theme }) => theme.COLORS.SECONDARY_COLOR};
 
   border-radius: 5px;
-  padding: 16px;
+  padding: 16px 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
 
   > h1 {
-    font-size: 16px;
+    font-size: 18px;
     color: ${({ theme }) => theme.COLORS.TEXT_COLOR_WHITE};
   }
 
@@ -40,11 +31,15 @@ export const Container = styled.section`
       display: flex;
       flex-wrap: wrap;
       max-width: 100%;
-      gap: 5px;
+      gap: 16px;
     }
 
     > ul li {
+      font-size: 10px;
       list-style: none;
+      > span {
+        padding:4px 2px;
+      }
     }
   }
 `;

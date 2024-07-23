@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../service/api.js";
-import { Link } from "react-router-dom";
-import { Container, Menu, Content, Sidebar } from "./style";
-import { Logo, SettingsButton, Filters } from "./style";
+import { Container, Menu, Content, Sidebar, NewNote } from "./style";
+import { Filters } from "./style";
 import { Header } from "../../components/header/index";
 import { Post } from "../../components/posts/index.jsx";
 import { ButtonText } from "../../components/buttontext/index.jsx";
@@ -14,12 +13,11 @@ import {
   SearchIcon,
 } from "./style";
 
-import { useAuth } from "../../hooks/auth";
 
-import { FiFolder, FiPlus, FiLogOut, FiSettings } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
 
 export function Home() {
-  const { signOut } = useAuth();
+
 
   const navigate = useNavigate();
 
@@ -58,24 +56,15 @@ export function Home() {
     <Container>
       <Header />
       <Sidebar>
-        <Logo>
-          <Link to="/">Notas da Profe</Link>
-        </Logo>
         <Menu>
           <li>
             <ButtonText
               title="All"
               onClick={() => handleTagSelected("All")}
               isActive={tagSelected.length === 0}
-              icon={<FiFolder />}
             />
           </li>
-          <li>
-            <ButtonText title="New Note" icon={<FiPlus />} to="/new" />
-          </li>
-          <li>
-            <ButtonText title="Logout" icon={<FiLogOut />} onClick={signOut} />
-          </li>
+
           {tags &&
             tags.map((tag) => (
               <li key={String(tag.id)}>
@@ -87,16 +76,11 @@ export function Home() {
               </li>
             ))}
         </Menu>
-        <SettingsButton>
-          <FiSettings />
-          <Link className="settings" to="/profile">
-            Settings
-          </Link>
-        </SettingsButton>
       </Sidebar>
       <Filters>
         <h2>Notas</h2>
         <SearchContainer>
+          <NewNote to="/new"><FiPlus /></NewNote>
           <SearchInput
             type="text"
             placeholder="Search"

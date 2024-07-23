@@ -7,8 +7,13 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 import avatarPlaceholder from "../../assets/avatar_placeholder.png";
 import { api } from "../../service/api";
+import { ButtonText } from "../../components/buttontext";
+
+import { FiLogOut } from "react-icons/fi";
 
 export function Profile() {
+
+  const { signOut } = useAuth();
   const { user, updateUser } = useAuth();
 
   const [name, setName] = useState(user.name);
@@ -24,14 +29,17 @@ export function Profile() {
   const [avatarFile, setAvatarFile] = useState(null);
 
   async function handleSubmit() {
-    const user = {
+    const updatedUser = {
+      ...user,
       name,
       email,
       password: passwordNew,
       old_password: passwordOld,
     };
-    await updateUser({ user, avatarFile });
+
+    await updateUser({ user: updatedUser, avatarFile });
   }
+
 
   async function handleAvatarChange(e) {
     const file = e.target.files[0];
@@ -47,6 +55,7 @@ export function Profile() {
         <Link to="/">
           <FiArrowLeft />
         </Link>
+        <ButtonText icon={<FiLogOut />} onClick={signOut} />
         <Avatar>
           <img src={avatar} alt="Imagem do usuário" />
           <label htmlFor="avatar">

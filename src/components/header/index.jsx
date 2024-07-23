@@ -1,5 +1,6 @@
-import { Container } from "./style";
-import { Profile } from "./style";
+import { Container, Profile, Logo } from "./style";
+import logo from "../../assets/note.png"
+
 import { api } from "../../service/api";
 import avatarPlaceholder from "../../assets/avatar_placeholder.png";
 import { useAuth } from "../../hooks/auth";
@@ -13,7 +14,10 @@ export function Header() {
 
   return (
     <Container>
-      <Profile>
+      <Logo>
+        <img src={logo}></img>
+      </Logo>
+      <Profile to="/profile">
         <img src={avatarUrl} alt="Imagem do usuário" />
       </Profile>
     </Container>
